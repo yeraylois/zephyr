@@ -8,6 +8,9 @@ on:
 jobs:
   capture:
     runs-on: ubuntu-latest
+    env:
+      ZEPHYR_BASE: ${{ github.workspace }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -33,9 +36,11 @@ jobs:
             tools/
           key: zephyr-modules-${{ hashFiles('west.yml') }}
 
-      - name: Install west and update modules
+      - name: Init west workspace and update modules
         run: |
           pip3 install -U west
+          west init -l .
+          export ZEPHYR_BASE=$(pwd)
           west update
 
       - name: Build screenshot sample
