@@ -54,6 +54,15 @@ cp -X build/zephyr/zephyr.uf2 /Volumes/HT-n5262/
 - `CONFIG_REGULATOR=y` (for vext)
 - Heltec Mesh Node T114 board support
 
+## Screenshots
+
+UI screens are automatically captured via GitHub Actions on every push to
+`samples/t114-validator`. The CI workflow builds the app for `native_sim`,
+runs it inside a virtual framebuffer, and saves PNG screenshots of each
+screen as build artifacts.
+
+Download the latest screenshots from the **Actions** tab in this fork.
+
 ## License
 
 Apache-2.0
