@@ -40,7 +40,7 @@ jobs:
 
       - name: Init west workspace and update modules
         run: |
-          pip3 install -U west
+          pip3 install -U west pyelftools
           west init -l .
           export ZEPHYR_BASE=$(pwd)
           west update
