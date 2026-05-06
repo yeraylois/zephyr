@@ -113,7 +113,7 @@ void test_tft_run(void)
 	lv_timer_handler();
 	display_blanking_off(display_dev);
 
-	/* Let the user see the test pattern for 2 seconds */
+	/* Show test pattern for 2s */
 	k_sleep(K_MSEC(2000));
 }
 

@@ -1,0 +1,10 @@
+/**
+ * Copyright (c) 2026 Yeray Lois Sanchez
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+&{/vext} {
+	status = "okay";
+	regulator-boot-on;
+};
