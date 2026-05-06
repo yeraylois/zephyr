@@ -1,0 +1,78 @@
+name: T114 Validator Screenshots
+
+on:
+  push:
+    branches: [samples/t114-validator]
+  workflow_dispatch:
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libsdl2-dev \
+            xvfb \
+            xdotool \
+            imagemagick \
+            python3-pip
+
+      - name: Cache Zephyr modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            modules/
+            tools/
+          key: zephyr-modules-${{ hashFiles('west.yml') }}
+
+      - name: Install west and update modules
+        run: |
+          pip3 install -U west
+          west update
+
+      - name: Build screenshot sample
+        run: |
+          west build -p always \
+            -b native_sim \
+            -s samples/t114_validator_screenshots \
+            -d build/t114_screenshots
+
+      - name: Capture UI screenshots
+        run: |
+          mkdir -p screenshots
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 240x135x24 +extension RANDR &
+          XVFB_PID=$!
+          sleep 2
+
+          ./build/t114_screenshots/zephyr/zephyr.exe &
+          APP_PID=$!
+          sleep 3
+
+          for i in $(seq 1 7); do
+            WINDOW_ID=$(xdotool search --name "Zephyr" | head -1)
+            if [ -n "$WINDOW_ID" ]; then
+              import -window "$WINDOW_ID" "screenshots/screen_${i}.png"
+            else
+              import -window root "screenshots/screen_${i}.png"
+            fi
+            sleep 4
+          done
+
+          kill $APP_PID || true
+          kill $XVFB_PID || true
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: t114-validator-screenshots
+          path: screenshots/*.png
+          retention-days: 30
