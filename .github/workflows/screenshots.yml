@@ -48,6 +48,12 @@ jobs:
           export ZEPHYR_BASE=$(pwd)
           west update
 
+      - name: Fix SDL2 headers
+        run: |
+          # Ubuntu SDL2 multi-arch header workaround
+          sudo ln -sf /usr/include/x86_64-linux-gnu/SDL2/SDL_config.h \
+            /usr/include/SDL2/_real_SDL_config.h
+
       - name: Build screenshot sample
         run: |
           ZEPHYR_TOOLCHAIN_VARIANT=host \
