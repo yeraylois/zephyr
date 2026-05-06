@@ -26,7 +26,9 @@ jobs:
             xvfb \
             xdotool \
             imagemagick \
-            python3-pip
+            python3-pip \
+            gcc \
+            g++
 
       - name: Cache Zephyr modules
         uses: actions/cache@v4
@@ -45,6 +47,7 @@ jobs:
 
       - name: Build screenshot sample
         run: |
+          ZEPHYR_TOOLCHAIN_VARIANT=host \
           west build -p always \
             -b native_sim \
             -s samples/t114_validator_screenshots \
