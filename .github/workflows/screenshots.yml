@@ -28,7 +28,10 @@ jobs:
             imagemagick \
             python3-pip \
             gcc \
-            g++
+            g++ \
+            gcc-multilib \
+            g++-multilib \
+            libc6-dev
 
       - name: Cache Zephyr modules
         uses: actions/cache@v4
