@@ -1,0 +1,13 @@
+/*
+ * Copyright (c) 2026 Yeray Lois Sanchez
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include "heltec_mesh_node_t114_common.dtsi"
+
+/ {
+	model = "Heltec Mesh Node T114";
+	compatible = "heltec,mesh-node-t114";
+};
