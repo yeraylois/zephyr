@@ -11,21 +11,6 @@
 / {
 	model = "Heltec Mesh Node T114";
 	compatible = "heltec,mesh-node-t114-uf2";
-
-	chosen {
-		zephyr,sram = &sd_ram0;
-	};
-
-	reserved-memory {
-		#address-cells = <1>;
-		#size-cells = <1>;
-		ranges;
-
-		sd_ram0: memory@20006000 {
-			compatible = "mmio-sram";
-			reg = <0x20006000 0x3a000>;
-		};
-	};
 };
 
 #include <../boards/common/usb/cdc_acm_serial.dtsi>
