@@ -17,7 +17,9 @@ Hardware validation application for the **Heltec Mesh Node T114 v2.0** running o
 </p>
 
 <p align="center">
-  <a href="#english">English</a> • <a href="#español">Español</a>
+  <a href="#english"><kbd>&nbsp;&nbsp;English&nbsp;&nbsp;</kbd></a>
+  &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+  <a href="#español"><kbd>&nbsp;&nbsp;Español&nbsp;&nbsp;</kbd></a>
 </p>
 
 </div>
@@ -107,10 +109,10 @@ Copy `build/zephyr/zephyr.uf2` to the UF2 mass storage device that appears when 
 
 ### Modes
 
-- **Auto Test** — Runs all 9 tests sequentially and presents a pass/fail summary.
-- **Manual Menu** — Choose individual tests from a scrollable menu.
-- **Test Preview** — Shows test instructions before execution in manual mode.
-- **Result Screen** — Grid showing `OK`, `FAIL`, or `SKIP` for each test.
+- **Auto Test**: Runs all 9 tests sequentially and presents a pass/fail summary.
+- **Manual Menu**: Choose individual tests from a scrollable menu.
+- **Test Preview**: Shows test instructions before execution in manual mode.
+- **Result Screen**: Grid showing `OK`, `FAIL`, or `SKIP` for each test.
 
 ### How it works
 
@@ -131,24 +133,24 @@ samples/t114_validator/
 └── CMakeLists.txt
 ```
 
-- `main.c` — Application state machine (dashboard, auto test, manual menu, results)
-- `button.c` — Input subsystem with short/long press detection
-- `test.c` — Hardware test implementations (LED, NeoPixel, TFT, ADC, temp, BLE, LoRa, QSPI)
-- `test.h` — Test result types and function signatures
-- `ui.c` — LVGL retro UI (dashboard, menus, preview, result, TFT color test)
-- `ui.h` — UI function declarations
-- `heltec_mesh_node_t114_nrf52840_uf2.overlay` — Enables vext regulator
-- `prj.conf` — Zephyr configuration (LVGL, display, GPIO, ADC, BLE, LoRa, flash, USB, regulator)
-- `CMakeLists.txt` — Standard Zephyr CMake project
+- `main.c`: Application state machine (dashboard, auto test, manual menu, results)
+- `button.c`: Input subsystem with short/long press detection
+- `test.c`: Hardware test implementations (LED, NeoPixel, TFT, ADC, temp, BLE, LoRa, QSPI)
+- `test.h`: Test result types and function signatures
+- `ui.c`: LVGL retro UI (dashboard, menus, preview, result, TFT color test)
+- `ui.h`: UI function declarations
+- `heltec_mesh_node_t114_nrf52840_uf2.overlay`: Enables vext regulator
+- `prj.conf`: Zephyr configuration (LVGL, display, GPIO, ADC, BLE, LoRa, flash, USB, regulator)
+- `CMakeLists.txt`: Standard Zephyr CMake project
 
 #### Application flow
 
 `main.c` implements a simple state machine over four screens:
 
-1. **Dashboard** — Displays battery percentage, temperature, USB connection status, and two mode options.
-2. **Auto Test** — Iterates through 9 test steps. Each step shows the test name, status (`RUNNING` / `PASS` / `FAIL`), a timer, and instructions for the user.
-3. **Manual Menu** — Grid of 8 individual tests plus a `BACK` option.
-4. **Result** — Final grid after auto test completion, or per-test result in manual mode.
+1. **Dashboard**: Displays battery percentage, temperature, USB connection status, and two mode options.
+2. **Auto Test**: Iterates through 9 test steps. Each step shows the test name, status (`RUNNING` / `PASS` / `FAIL`), a timer, and instructions for the user.
+3. **Manual Menu**: Grid of 8 individual tests plus a `BACK` option.
+4. **Result**: Final grid after auto test completion, or per-test result in manual mode.
 
 The button logic in `button.c` uses Zephyr's `input` subsystem with a delayed work item to distinguish short presses (< 800 ms) from long presses.
 
@@ -207,11 +209,11 @@ docs/images/t114-validator/
 .github/workflows/screenshots.yml
 ```
 
-- `samples/t114_validator/` — Hardware validation app
-- `samples/t114_validator_screenshots/` — native_sim build for CI screenshots
-- `boards/heltec/heltec_mesh_node_t114/` — Upstream board support (PR #108611)
-- `docs/images/t114-validator/` — UI screenshots
-- `.github/workflows/screenshots.yml` — GitHub Actions CI for screenshots
+- `samples/t114_validator/`: Hardware validation app
+- `samples/t114_validator_screenshots/`: native_sim build for CI screenshots
+- `boards/heltec/heltec_mesh_node_t114/`: Upstream board support (PR #108611)
+- `docs/images/t114-validator/`: UI screenshots
+- `.github/workflows/screenshots.yml`: GitHub Actions CI for screenshots
 
 ---
 
@@ -298,10 +300,10 @@ Copia `build/zephyr/zephyr.uf2` al dispositivo de almacenamiento masivo UF2 que 
 
 ### Modos
 
-- **Prueba automática** — Ejecuta las 9 pruebas secuencialmente y muestra un resumen de OK/FALLO.
-- **Menú manual** — Elige pruebas individuales desde un menú desplazable.
-- **Vista previa** — Muestra instrucciones antes de ejecutar una prueba en modo manual.
-- **Pantalla de resultados** — Cuadrícula que muestra `OK`, `FALLO` o `SALTAR` para cada prueba.
+- **Prueba automática**: Ejecuta las 9 pruebas secuencialmente y muestra un resumen de OK/FALLO.
+- **Menú manual**: Elige pruebas individuales desde un menú desplazable.
+- **Vista previa**: Muestra instrucciones antes de ejecutar una prueba en modo manual.
+- **Pantalla de resultados**: Cuadrícula que muestra `OK`, `FALLO` o `SALTAR` para cada prueba.
 
 ### Cómo funciona
 
@@ -322,24 +324,24 @@ samples/t114_validator/
 └── CMakeLists.txt
 ```
 
-- `main.c` — Máquina de estados de la app (dashboard, auto test, menú manual, resultados)
-- `button.c` — Subsistema de entrada con detección de pulsación corta/larga
-- `test.c` — Implementaciones de pruebas hardware (LED, NeoPixel, TFT, ADC, temp, BLE, LoRa, QSPI)
-- `test.h` — Tipos de resultado y firmas de funciones
-- `ui.c` — UI LVGL estilo retro (dashboard, menús, preview, resultado, test de color TFT)
-- `ui.h` — Declaraciones de funciones de UI
-- `heltec_mesh_node_t114_nrf52840_uf2.overlay` — Activa el regulador vext
-- `prj.conf` — Configuración de Zephyr (LVGL, display, GPIO, ADC, BLE, LoRa, flash, USB, regulator)
-- `CMakeLists.txt` — Proyecto CMake estándar de Zephyr
+- `main.c`: Máquina de estados de la app (dashboard, auto test, menú manual, resultados)
+- `button.c`: Subsistema de entrada con detección de pulsación corta/larga
+- `test.c`: Implementaciones de pruebas hardware (LED, NeoPixel, TFT, ADC, temp, BLE, LoRa, QSPI)
+- `test.h`: Tipos de resultado y firmas de funciones
+- `ui.c`: UI LVGL estilo retro (dashboard, menús, preview, resultado, test de color TFT)
+- `ui.h`: Declaraciones de funciones de UI
+- `heltec_mesh_node_t114_nrf52840_uf2.overlay`: Activa el regulador vext
+- `prj.conf`: Configuración de Zephyr (LVGL, display, GPIO, ADC, BLE, LoRa, flash, USB, regulator)
+- `CMakeLists.txt`: Proyecto CMake estándar de Zephyr
 
 #### Flujo de la aplicación
 
 `main.c` implementa una máquina de estados simple sobre cuatro pantallas:
 
-1. **Dashboard** — Muestra porcentaje de batería, temperatura, estado de conexión USB y dos opciones de modo.
-2. **Prueba automática** — Itera por 9 pasos de prueba. Cada paso muestra el nombre, el estado (`RUNNING` / `PASS` / `FAIL`), un temporizador e instrucciones para el usuario.
-3. **Menú manual** — Cuadrícula de 8 pruebas individuales más la opción `BACK`.
-4. **Resultado** — Cuadrícula final tras completar la prueba automática, o resultado individual en modo manual.
+1. **Dashboard**: Muestra porcentaje de batería, temperatura, estado de conexión USB y dos opciones de modo.
+2. **Prueba automática**: Itera por 9 pasos de prueba. Cada paso muestra el nombre, el estado (`RUNNING` / `PASS` / `FAIL`), un temporizador e instrucciones para el usuario.
+3. **Menú manual**: Cuadrícula de 8 pruebas individuales más la opción `BACK`.
+4. **Resultado**: Cuadrícula final tras completar la prueba automática, o resultado individual en modo manual.
 
 La lógica de botón en `button.c` usa el subsistema `input` de Zephyr con un trabajo diferido para distinguir pulsaciones cortas (< 800 ms) de largas.
 
@@ -398,11 +400,11 @@ docs/images/t114-validator/
 .github/workflows/screenshots.yml
 ```
 
-- `samples/t114_validator/` — App de validación hardware
-- `samples/t114_validator_screenshots/` — Build native_sim para capturas CI
-- `boards/heltec/heltec_mesh_node_t114/` — Soporte de placa upstream (PR #108611)
-- `docs/images/t114-validator/` — Capturas de pantalla de la UI
-- `.github/workflows/screenshots.yml` — GitHub Actions CI para capturas
+- `samples/t114_validator/`: App de validación hardware
+- `samples/t114_validator_screenshots/`: Build native_sim para capturas CI
+- `boards/heltec/heltec_mesh_node_t114/`: Soporte de placa upstream (PR #108611)
+- `docs/images/t114-validator/`: Capturas de pantalla de la UI
+- `.github/workflows/screenshots.yml`: GitHub Actions CI para capturas
 
 ---
 
